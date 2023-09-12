@@ -81,6 +81,21 @@ spec:
                         maximum: 65535
                         minimum: 1
                         type: integer
+                      resources:
+                        default: {}
+                        type: object
+                        requests:
+                          type: object
+                          cpu:
+                            type: string
+                          memory:
+                            type: string
+                        limits:
+                          type: object
+                          cpu:
+                            type: string
+                          memory:
+                            type: string
                       tolerations:
                         description: If specified, define Pod's tolerations
                         items:

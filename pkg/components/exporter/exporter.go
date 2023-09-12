@@ -104,6 +104,8 @@ func NewDaemonSet(detail components.Detail, k *v1alpha1.Kepler) *appsv1.DaemonSe
 		tolerations = defaultTolerations
 	}
 
+	resources := k.Spec.Exporter.Deployment.ResourceRequirements
+
 	bindAddress := "0.0.0.0:" + strconv.Itoa(int(deployment.Port))
 
 	return &appsv1.DaemonSet{
@@ -173,6 +175,7 @@ func NewDaemonSet(detail components.Detail, k *v1alpha1.Kepler) *appsv1.DaemonSe
 							{Name: "proc", MountPath: "/proc"},
 							{Name: "cfm", MountPath: "/etc/kepler/kepler.config"},
 						}, // VolumeMounts
+						Resources: resources,
 					}}, // Container: kepler /  Containers
 					Volumes: []corev1.Volume{
 						k8s.VolumeFromHost("lib-modules", "/lib/modules"),

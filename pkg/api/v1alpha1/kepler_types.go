@@ -106,6 +106,10 @@ type ExporterDeploymentSpec struct {
 	// If specified, define Pod's tolerations
 	// +optional
 	Tolerations []corev1.Toleration `json:"tolerations,omitempty"`
+
+	// Defines the resource requests and limits
+	// +optional
+	ResourceRequirements corev1.ResourceRequirements `json:"resources,omitempty"`
 }
 
 type ExporterSpec struct {
